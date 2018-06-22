@@ -5,14 +5,21 @@ node('mac') {
     }
 
     stage('Checkout') {
-        def scmInfo = checkout scm
+        def gitScm = checkout scm
 
-        scmInfo.each { k,v ->
+        gitScm.each { k,v ->
             echo "key: ${k}, value: ${v}"
         }
 
-        def gitUrl = scmInfo.GIT_URL
+        def gitUrl = gitScm.GIT_URL
 
         echo "Git URL: ${gitUrl}"
+
+        def repos = gitScm.getUserRemoteConfigs()
+        repos.each { repo ->
+            echo repo.getName()
+            echo repo.getUrl()
+            echo repo.toString()
+        }
     }
 }
