@@ -12,14 +12,11 @@ node('mac') {
         }
 
         def gitUrl = gitScm.GIT_URL
+        def repoName = gitScm.GIT_URL.tokenize('/.')[-2]
 
         echo "Git URL: ${gitUrl}"
+        echo "Repo name: ${repoName}"
 
-        def repos = gitScm.getUserRemoteConfigs()
-        repos.each { repo ->
-            echo repo.getName()
-            echo repo.getUrl()
-            echo repo.toString()
-        }
+
     }
 }
