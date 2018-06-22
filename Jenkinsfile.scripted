@@ -7,10 +7,12 @@ node('mac') {
     stage('Checkout') {
         def scmInfo = checkout scm
 
-        echo "Git URL: ${GIT_URL}"
-
         scmInfo.each { k,v ->
             echo "key: ${k}, value: ${v}"
         }
+
+        def gitUrl = scm.GIT_URL
+
+        echo 'Git URL: $gitUrl'
     }
 }
