@@ -5,9 +5,9 @@ node('mac') {
     }
 
     stage('Checkout') {
-        checkout scm
+        def gitScm = checkout scm
 
-        scm.each { k,v ->
+        gitScm.each { k,v ->
             echo "key: ${k}, value: ${v}"
         }
 
@@ -18,11 +18,17 @@ node('mac') {
             echo "token: ${token}"
         }
 
-        def repoName = gitScm.GIT_URL.tokenize('/.')[-2]
+        //def repoName = gitScm.GIT_URL.tokenize('/.')[-2]
 
         echo "Git URL: ${gitUrl}"
+
+        def url = 'https://github.com/hmcts/moj-rhubarb-recipes-service/pull/69'
+        def repoName = getRepoName(url)
         echo "Repo name: ${repoName}"
 
-
     }
+}
+
+def getRepoName(String url) {
+    return url.tokenize('/.')[-3]
 }
