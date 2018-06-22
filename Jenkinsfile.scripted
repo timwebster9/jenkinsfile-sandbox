@@ -11,8 +11,6 @@ node('mac') {
             echo "key: ${k}, value: ${v}"
         }
 
-        def gitUrl = gitScm.GIT_URL
-
         def tokens = gitScm.GIT_URL.tokenize('/.')
         tokens.each { token ->
             echo "token: ${token}"
