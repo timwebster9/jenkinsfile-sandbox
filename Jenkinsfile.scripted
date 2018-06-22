@@ -13,6 +13,6 @@ node('mac') {
 
         def gitUrl = scmInfo.GIT_URL
 
-        echo 'Git URL: $gitUrl'
+        echo "Git URL: ${gitUrl}"
     }
 }
