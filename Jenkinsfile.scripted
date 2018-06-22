@@ -11,7 +11,7 @@ node('mac') {
             echo "key: ${k}, value: ${v}"
         }
 
-        def gitUrl = scm.GIT_URL
+        def gitUrl = scmInfo.GIT_URL
 
         echo 'Git URL: $gitUrl'
     }
