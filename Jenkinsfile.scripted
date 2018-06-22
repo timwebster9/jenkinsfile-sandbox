@@ -16,10 +16,6 @@ node('mac') {
             echo "token: ${token}"
         }
 
-        //def repoName = gitScm.GIT_URL.tokenize('/.')[-2]
-
-        echo "Git URL: ${gitUrl}"
-
         def url = 'https://github.com/hmcts/moj-rhubarb-recipes-service/pull/69'
         def repoName = getRepoName(url)
         echo "Repo name: ${repoName}"
