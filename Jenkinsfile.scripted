@@ -12,6 +12,12 @@ node('mac') {
         }
 
         def gitUrl = gitScm.GIT_URL
+
+        def tokens = gitScm.GIT_URL.tokenize('/.')
+        tokens.each { token ->
+            echo "token: ${token}"
+        }
+
         def repoName = gitScm.GIT_URL.tokenize('/.')[-2]
 
         echo "Git URL: ${gitUrl}"
