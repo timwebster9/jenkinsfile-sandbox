@@ -5,9 +5,9 @@ node('mac') {
     }
 
     stage('Checkout') {
-        def gitScm = checkout scm
+        checkout scm
 
-        gitScm.each { k,v ->
+        scm.each { k,v ->
             echo "key: ${k}, value: ${v}"
         }
 
