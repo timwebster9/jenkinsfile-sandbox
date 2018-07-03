@@ -13,6 +13,7 @@ node('mac') {
             throw new RuntimeException()
         } catch (err) {
             currentBuild.result = "UNSTABLE"
+            err.printStackTrace()
         }
     }
     stage('Two') {
