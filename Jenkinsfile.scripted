@@ -16,6 +16,6 @@ node('mac') {
         }
     }
     stage('Two') {
-        sh 'hello world'
+        echo 'hello world'
     }
 }
