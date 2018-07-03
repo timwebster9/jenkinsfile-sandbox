@@ -5,24 +5,17 @@ node('mac') {
     }
 
     stage('Checkout') {
-        def gitScm = checkout scm
-
-        gitScm.each { k,v ->
-            echo "key: ${k}, value: ${v}"
-        }
-
-        def tokens = gitScm.GIT_URL.tokenize('/.')
-        tokens.each { token ->
-            echo "token: ${token}"
-        }
-
-        def url = 'https://github.com/hmcts/moj-rhubarb-recipes-service/pull/69'
-        def repoName = getRepoName(url)
-        echo "Repo name: ${repoName}"
-
+        checkout scm
     }
-}
 
-def getRepoName(String url) {
-    return url.tokenize('/.')[-3]
+    stage('One') {
+        try {
+            throw new RuntimeException()
+        } catch (err) {
+            currentBuild.result = "UNSTABLE"
+        }
+    }
+    stage('Two') {
+        sh 'hello world'
+    }
 }
