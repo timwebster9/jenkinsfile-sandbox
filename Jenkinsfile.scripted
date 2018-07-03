@@ -10,7 +10,7 @@ node('mac') {
 
     stage('One') {
         try {
-            throw new RuntimeException()
+            sh 'mvn clean install'
         } catch (err) {
             currentBuild.result = "UNSTABLE"
             echo "${err.getMessage()}"
