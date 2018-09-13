@@ -9,7 +9,7 @@ node('mac') {
     }
 
     stage('One') {
-        def githubApi = new com.timw.GithubAPI()
+        def githubApi = new com.timw.GithubAPI(this)
         githubApi.addLabels('githubapi-test', '1', 'label1', 'label2')
     }
 }
