@@ -9,14 +9,7 @@ node('mac') {
     }
 
     stage('One') {
-        try {
-            sh 'mvn clean install'
-        } catch (err) {
-            currentBuild.result = "UNSTABLE"
-            echo "${err.getMessage()}"
-        }
-    }
-    stage('Two') {
-        echo 'hello world'
+        def githubApi = new com.timw.GithubAPI()
+        githubApi.addLabels('githubapi-test', '1', 'label1', 'label2')
     }
 }
